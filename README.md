@@ -19,13 +19,24 @@ This plugin useful in webkit-based browsers. It is compatible but useless in Fir
 Add this line to your HTML file after Leaflet:
 
 ```html
-<script type="text/javascript" src="l-subpixel-position.js"></script>
+<script type="text/javascript" src="https://unpkg.com/l-subpixel-position@1.0.0/index.js"></script>
+```
+
+Or you can use npm and es6 modules:
+
+```bash
+npm i leaflet l-subpixel-position --save
+```
+
+```js
+import 'leaflet';
+import 'l-subpixel-position';
 ```
 
 Then add your first MovingMarker:
 
 ```js
-var myMarker = L.Marker([48.8567, 2.3508]).addTo(map);
+const myMarker = L.Marker([48.8567, 2.3508]).addTo(map);
 
 ...
 myMarker.setLatLngPrecise(latlng)
