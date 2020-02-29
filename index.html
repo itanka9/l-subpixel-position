@@ -1,0 +1,113 @@
+<?doctype html>
+<html>
+    <head>
+        <title>Leaflet.SubpixelPosition demo</title>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/themes/prism.css">
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+        <script src="./index.js"></script>
+    </head>
+    <style>
+        html, body {
+            font-family: Ubuntu, sans-serif;
+        }
+        .row {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .map-wrap, h1, .codesample {
+            margin: 16px 32px;
+        }
+
+        .map {
+            height: 350px;
+            width: 350px;
+        }
+
+        pre code {
+            font-size: 12px !important;
+        }
+    </style>
+    <body>
+        <h1>Leaflet.SubpixelPosition demo</h1>
+
+        <div class="row">
+            <div class="map-wrap">
+                <p>Without subpixel positioning:</p>
+                <div id="no_subpix" class="map"></div>
+            </div>
+            
+            <div class="map-wrap">
+                <p>With subpixel positioning:</p>
+                <div id="with_subpix" class="map"></div>
+            </div>
+
+            <div class="codesample">
+            <p>Sample code:</p>
+            <pre><code class="language-javascript">function demoAnimate (setPos) {
+    function step(timestamp) {
+        var radius = 20;
+        setPos([
+            Math.cos(timestamp / 5000) * radius,
+            Math.sin(timestamp / 5000) * radius
+        ]);            
+        requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+}
+
+demoAnimate(function (latlng) {
+    noSubpixMarker.setLatLng(latlng)
+    subpixMarker.setLatLngPrecise(latlng)
+})</code></pre>
+            </div>
+        </div>
+
+        <script>
+            var copyright = {
+                    attribution: 'Maps © <a href=\"www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors',
+                    maxZoom: 18
+                };
+
+            var center = [0, 0], zoom = 2;
+
+            function createMapWithMarker (id) {
+                var map = L.map(id),
+                    layer = new L.TileLayer(
+                    'https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png',
+                    copyright
+                );
+
+                map.setView(center, zoom);
+                layer.addTo(map);
+
+                return L.marker(center).addTo(map);
+            } 
+
+            function demoAnimate (setPos) {
+                function step(timestamp) {
+                    var radius = 20;
+                    
+                    setPos([
+                        Math.cos(timestamp / 5000) * radius,
+                        Math.sin(timestamp / 5000) * radius
+                    ]);
+                                    
+                    requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+            }
+
+            var noSubpixMarker = createMapWithMarker('no_subpix');
+            var subpixMarker = createMapWithMarker('with_subpix');
+
+            demoAnimate(function (latlng) {
+                noSubpixMarker.setLatLng(latlng)
+                subpixMarker.setLatLngPrecise(latlng)
+            })
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/prism.min.js"></script>
+    </body>
+</html>

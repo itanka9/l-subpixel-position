@@ -1,0 +1,23 @@
+{
+  "name": "l-subpixel-position",
+  "version": "1.0.0",
+  "description": "This leaflet plugin adds subpixel positioning methods for leaflet objects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itanka9/l-subpixel-position.git"
+  },
+  "keywords": [
+    "leaflet",
+    "animation"
+  ],
+  "author": "itanka9",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/itanka9/l-subpixel-position/issues"
+  },
+  "homepage": "https://github.com/itanka9/l-subpixel-position#readme"
+}
