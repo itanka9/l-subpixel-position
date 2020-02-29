@@ -33,7 +33,7 @@ import 'leaflet';
 import 'l-subpixel-position';
 ```
 
-Then add your first MovingMarker:
+Then add can call `setLatLngPrecise` method of your `L.Marker` instances:
 
 ```js
 const myMarker = L.Marker([48.8567, 2.3508]).addTo(map);
