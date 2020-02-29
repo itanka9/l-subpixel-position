@@ -1,6 +1,6 @@
 {
   "name": "l-subpixel-position",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This leaflet plugin adds subpixel positioning methods for leaflet objects.",
   "main": "index.js",
   "scripts": {
